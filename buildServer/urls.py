@@ -18,6 +18,9 @@ from django.urls import path, include, re_path
 from django.contrib.staticfiles.views import serve
 from rest_framework import routers
 from sbtBuildServer import views
+from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import refresh_jwt_token
+
 from django.views.generic import RedirectView
 
 router = routers.DefaultRouter()
@@ -25,11 +28,13 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
-    path('', serve,kwargs={'path': 'index.html'}),
+    # path('', serve,kwargs={'path': 'index.html'}),
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('api/', include('sbtBuildServer.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    re_path(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
-        RedirectView.as_view(url='/static/%(path)s', permanent=False))
+    path('api-token-auth/', obtain_jwt_token),
+    path('api-token-refresh/', refresh_jwt_token),
+    # re_path(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
+    #     RedirectView.as_view(url='/static/%(path)s', permanent=False))
 ]

@@ -1,6 +1,7 @@
-buildServer/__pycache__/
+sbtBuildServer/__pycache__/
 .idea/
 frontend/dist/
 frontend/node_modules/
 db.sqlite3
 static/
+sbtBuildServer/migrations/__pycache__/

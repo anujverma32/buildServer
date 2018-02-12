@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { Route, Switch } from "react-router-dom";
 
-import Header from './components/shared/header/header'
-import Dashboard from './components/dashboard/dashboard';
-import Settins from './components/setting/setting';
+import Header from './shared/header/header';
+import Dashboard from './dashboard/dashboard';
+import Settins from './setting/setting';
 import './App.css'
 
 

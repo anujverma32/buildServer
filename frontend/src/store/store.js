@@ -10,6 +10,7 @@ import rootReducer from '../reducers'
 export default (history) => {
     const persistedFilter = createFilter(
         'auth', ['access', 'refresh']);
+        
     const reducer = persistReducer(
         {
             key: 'polls',
@@ -18,6 +19,7 @@ export default (history) => {
             transforms: [persistedFilter]
         },
         rootReducer)
+
     const store = createStore(
         reducer, {},
         applyMiddleware(

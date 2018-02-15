@@ -70,9 +70,3 @@ export function isAuthenticated(state) {
 export function errors(state) {
     return state.errors
 }
-export function withAuth(headers = {}) {
-    return (state) => ({
-        ...headers,
-        'Authorization': `JWT ${accessToken(state)}`
-    })
-}

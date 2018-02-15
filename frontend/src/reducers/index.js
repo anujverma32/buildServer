@@ -28,6 +28,6 @@ export const serverMessage =
 export function withAuth(headers = {}) {
     return (state) => ({
         ...headers,
-        'Authorization': `JWT ${accessToken(state)}`
+        'Authorization': `Bearer ${accessToken(state)}`
     })
 }

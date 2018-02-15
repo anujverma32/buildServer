@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import configureStore from './store/store.js';
+import configureStore from './stores/store.js';
 import App from './containers/App';
 import Login from './containers/Login';
 import PrivateRoute from './containers/PrivateRoute';

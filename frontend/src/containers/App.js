@@ -1,20 +1,28 @@
-import React from 'react';
-// import { Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 
-// import Header from './shared/header/header';
-// import Dashboard from './dashboard/dashboard';
-// import Settins from './setting/setting';
+import { echo } from '../actions/echo'
+import { serverMessage } from '../reducers'
 import './App.css'
 
-
-const App = () => (
-  <div>
-    {/* <Header></Header>
-    <Switch>
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/setting" component={Settins} />
-    </Switch> */}
-    <h1>Hello, this is app page</h1>
-  </div>
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchMessage('Hi!')
+  }
+  render() {
+    return (
+      <div>
+        <h2>Welcome</h2>
+        <p>{this.props.message}</p>
+      </div>
+    );
+  }
+}
+const mapStateToProps = (state) => ({
+  message: serverMessage(state)
+})
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({ fetchMessage: echo }, dispatch)
 )
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App);

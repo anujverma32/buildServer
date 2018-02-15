@@ -18,7 +18,7 @@
     "reactstrap": "^5.0.0-beta",
     "redux": "^3.7.2",
     "redux-api-middleware": "^2.2.0",
-    "redux-persist": "^5.7.1",
+    "redux-persist": "^5.8.0",
     "redux-persist-transform-filter": "0.0.16"
   },
   "scripts": {

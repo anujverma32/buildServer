@@ -11,3 +11,9 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ('url', 'name')
+
+class MessageSerializer(serializers.Serializer):
+    message = serializers.CharField()
+
+class TestSerializer(serializers.Serializer):
+    data = serializers.CharField()

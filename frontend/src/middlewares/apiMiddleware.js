@@ -27,7 +27,7 @@ export function createApiMiddleware() {
             if (isRSAA(action)) {
                 const state = getState(),
                     token = refreshToken(state)
-
+                    
                 if (token && isAccessTokenExpired(state)) {
                     postponedRSAAs.push(action)
                     if (postponedRSAAs.length === 1) {

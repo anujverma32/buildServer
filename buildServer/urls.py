@@ -31,10 +31,10 @@ urlpatterns = [
     # path('', serve,kwargs={'path': 'index.html'}),
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('api/', include('sbtBuildServer.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api-token-auth/', obtain_jwt_token),
     path('api-token-refresh/', refresh_jwt_token),
     # re_path(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
     #     RedirectView.as_view(url='/static/%(path)s', permanent=False))
+    path('', include('sbtBuildServer.urls')),
 ]

@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import auth, * as fromAuth from './auth.js'
-import echo, * as fromEcho from './echo.js'
+import auth, * as fromAuth from './auth'
+import echo, * as fromEcho from './echo'
+import test, * as fromTest from './test'
 
 export default combineReducers({
     auth: auth,
     echo: echo,
+    test: test,
     router: routerReducer
 })
 
@@ -24,6 +26,8 @@ export const authErrors =
     state => fromAuth.errors(state.auth)
 export const serverMessage =
     state => fromEcho.serverMessage(state.echo)
+export const testResponse =
+    state => fromTest.testResponse(state.test)
 
 export function withAuth(headers = {}) {
     return (state) => ({

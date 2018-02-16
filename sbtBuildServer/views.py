@@ -1,22 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from sbtBuildServer.serializers import UserSerializer, GroupSerializer
+from rest_framework import views, status, viewsets
+from rest_framework.response import Response
+
+from sbtBuildServer.serializers import *
 
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
-
 class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+class EchoView(views.APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = MessageSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class TestView(views.APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = TestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        print(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

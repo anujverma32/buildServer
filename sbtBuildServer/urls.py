@@ -1,21 +1,8 @@
 from django.urls import path
-from django.contrib.staticfiles.views import serve
 
-from . import views
+from sbtBuildServer.views import *
 
-# urlpatterns = [
-    # path('', views.index, name='index'),
-# ]
-from rest_framework import views, serializers, status
-from rest_framework.response import Response
-class MessageSerializer(serializers.Serializer):
-    message = serializers.CharField()
-class EchoView(views.APIView):
-    def post(self, request, *args, **kwargs):
-        serializer = MessageSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        return Response(
-            serializer.data, status=status.HTTP_201_CREATED)
 urlpatterns = [
-    path('echo/', EchoView.as_view())
+    path('echo/', EchoView.as_view(), name='EchoView'),
+    path('test/', TestView.as_view(), name='TestView'),
 ]

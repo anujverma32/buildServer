@@ -37,9 +37,9 @@ export default class LoginForm extends Component {
                     <TextInput name="password" label="Password"
                         error={errors.password} type="password"
                         onChange={this.handleInputChange}/>
-                <Button type="submit" color="primary" size="lg">
-                    Log In
-                </Button>
+                    <Button type="submit" color="primary" size="lg">
+                        Log In
+                    </Button>
                 </Form>
             </Jumbotron >
         )

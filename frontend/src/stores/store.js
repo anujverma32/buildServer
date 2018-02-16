@@ -4,6 +4,7 @@ import { applyMiddleware, createStore } from 'redux'
 import { createFilter } from 'redux-persist-transform-filter';
 import { persistReducer, persistStore } from 'redux-persist'
 import { routerMiddleware } from 'react-router-redux'
+import logger from 'redux-logger';
 
 import rootReducer from '../reducers'
 
@@ -23,6 +24,7 @@ export default (history) => {
     const store = createStore(
         reducer, {},
         applyMiddleware(
+            logger,
             apiMiddleware,
             routerMiddleware(history))
     )

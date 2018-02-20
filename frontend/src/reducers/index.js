@@ -4,14 +4,18 @@ import { routerReducer } from 'react-router-redux'
 import auth, * as fromAuth from './auth'
 import echo, * as fromEcho from './echo'
 import test, * as fromTest from './test'
+import profile, * as fromProfile from './user'
 
 export default combineReducers({
     auth: auth,
     echo: echo,
     test: test,
+    profile: profile,
     router: routerReducer
 })
 
+export const currentUser =
+    state => fromAuth.currentUser(state.auth)
 export const isAuthenticated =
     state => fromAuth.isAuthenticated(state.auth)
 export const accessToken =
@@ -28,6 +32,8 @@ export const serverMessage =
     state => fromEcho.serverMessage(state.echo)
 export const testResponse =
     state => fromTest.testResponse(state.test)
+export const profileData = 
+    state => fromProfile.profileData(state.profile)
 
 export function withAuth(headers = {}) {
     return (state) => ({

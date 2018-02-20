@@ -40,6 +40,13 @@ export default (state = initialState, action) => {
             return state
     }
 }
+
+export function currentUser(state) {
+    if (state.access) {
+        return state.access
+    }
+}
+
 export function accessToken(state) {
     if (state.access) {
         return state.access.token
@@ -58,15 +65,18 @@ export function isAccessTokenExpired(state) {
     }
     return true
 }
+
 export function isRefreshTokenExpired(state) {
     if (state.refresh && state.refresh.exp) {
         return 1000 * state.refresh.exp - (new Date()).getTime() < 5000
     }
     return true
 }
+
 export function isAuthenticated(state) {
     return !isRefreshTokenExpired(state)
 }
+
 export function errors(state) {
     return state.errors
 }

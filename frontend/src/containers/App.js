@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
 import { echo } from '../actions/echo'
-import { serverMessage, testResponse } from '../reducers'
+import { serverMessage, testResponse, currentUser, profileData } from '../reducers'
 import { test } from '../actions/test'
+import { getProfile } from '../actions/user'
 import './App.css'
 import { Button } from 'reactstrap';
 
 class App extends Component {
-  componentDidMount() {
+  componentDidMount = () => {
     this.props.fetchMessage('Hi!')
+    this.props.getProfile(this.props.currentUser.user_id)
   }
-  buttonClicked() {
-    console.log(this);
+  buttonClicked = (event) => {
     // this.props.sendTestmessage("hello django");
+    console.log(this.props.profileData)
   }
   render() {
     return (
@@ -29,21 +31,12 @@ class App extends Component {
 }
 const mapStateToProps = (state) => ({
   message: serverMessage(state),
-  data: testResponse(state)
+  data: testResponse(state),
+  currentUser: currentUser(state),
+  profileData: profileData(state)
 })
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchMessage: echo, sendTestmessage: test }, dispatch)
+  bindActionCreators({ fetchMessage: echo, sendTestmessage: test, getProfile: getProfile }, dispatch)
 )
-
-// Another way of defining mapDispatchToProps
-
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchMessage: (message) => {
-//     dispatch(echo(message))
-//   },
-//   sendTestmessage: (data) => {
-//     dispatch(test(data))
-//   }
-// })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

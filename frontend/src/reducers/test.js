@@ -6,7 +6,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case test.TEST_SUCCESS:
             return {
-                data: action.payload.data
+                data: action.payload.public_key
             }
         default:
             return state

@@ -15,7 +15,7 @@ class App extends Component {
     this.props.getProfile(this.props.currentUser.user_id)
   }
   buttonClicked = (event) => {
-    // this.props.sendTestmessage("hello django");
+    this.props.sendTestmessage("hello django");
     console.log(this.props.profileData)
   }
   render() {

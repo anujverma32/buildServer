@@ -7,7 +7,6 @@ import { serverMessage, testResponse, currentUser, profileData } from '../reduce
 import { test } from '../actions/test'
 import { getProfile } from '../actions/user'
 import './App.css'
-import { Button } from 'reactstrap';
 
 class App extends Component {
   componentDidMount = () => {
@@ -23,7 +22,7 @@ class App extends Component {
       <div>
         <h2>Welcome</h2>
         <p>{this.props.message}</p>
-        <Button onClick={this.buttonClicked}>Click me!</Button>
+        <button onClick={this.buttonClicked}>Click me!</button>
         <p>{this.props.data}</p>
       </div>
     );

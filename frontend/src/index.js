@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router'
 import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import CssBaseline from 'material-ui/CssBaseline';
 import configureStore from './stores/store.js';
 import App from './containers/App';
 import Login from './containers/Login';
@@ -18,14 +18,17 @@ const history = createHistory()
 const store = configureStore(history)
 
 ReactDOM.render((
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <Switch>
-                <Route exact path="/login/" component={Login} />
-                <PrivateRoute path="/" component={App} />
-            </Switch>
-        </ConnectedRouter>
-    </Provider>
+    <div>
+        <CssBaseline />
+        <Provider store={store}>
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route exact path="/login/" component={Login} />
+                    <PrivateRoute path="/" component={App} />
+                </Switch>
+            </ConnectedRouter>
+        </Provider>
+    </div>
 ), document.getElementById('root'));
 
 registerServiceWorker();

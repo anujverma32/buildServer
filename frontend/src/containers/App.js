@@ -6,6 +6,8 @@ import { echo } from '../actions/echo'
 import { serverMessage, testResponse, currentUser, profileData } from '../reducers'
 import { test } from '../actions/test'
 import { getProfile } from '../actions/user'
+import { signOut } from "../actions/auth";
+import Header from "../components/shared/header/header";
 import './App.css'
 
 class App extends Component {
@@ -20,6 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header {...this.props}/>
         <h2>Welcome</h2>
         <p>{this.props.message}</p>
         <button onClick={this.buttonClicked}>Click me!</button>
@@ -35,7 +38,7 @@ const mapStateToProps = (state) => ({
   profileData: profileData(state)
 })
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchMessage: echo, sendTestmessage: test, getProfile: getProfile }, dispatch)
+  bindActionCreators({ fetchMessage: echo, sendTestmessage: test, getProfile: getProfile, signOut: signOut }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

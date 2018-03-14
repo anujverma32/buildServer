@@ -5,12 +5,14 @@ import auth, * as fromAuth from './auth'
 import echo, * as fromEcho from './echo'
 import test, * as fromTest from './test'
 import profile, * as fromProfile from './user'
+import layout, * as fromLayout from './layout'
 
 export default combineReducers({
     auth: auth,
     echo: echo,
     test: test,
     profile: profile,
+    layout: layout,
     router: routerReducer
 })
 
@@ -34,6 +36,8 @@ export const testResponse =
     state => fromTest.testResponse(state.test)
 export const profileData = 
     state => fromProfile.profileData(state.profile)
+export const isSidebarOpen =
+    state => fromLayout.isSidebarOpen(state.layout)
 
 export function withAuth(headers = {}) {
     return (state) => ({

@@ -33,5 +33,7 @@ export const refreshAccessToken = (token) => ({
 })
 export const signOut = () => ({
     type: SIGN_OUT,
-    payload: ""
+    payload: {
+        token: undefined
+    }
 })

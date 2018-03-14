@@ -7,7 +7,11 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import Menu from 'material-ui/Menu';
+import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import ExitToApp from 'material-ui-icons/ExitToApp';
+
+import './header.css';
 
 class Header extends Component {
     state = {
@@ -27,13 +31,17 @@ class Header extends Component {
         this.setState({ anchorEl: null });
     }
 
+    toggleSidebar = () => {
+        this.props.toggleSidebar(this.props.isSidebarOpen);
+    }
+
     render() {
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
         return (
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton color="inherit" aria-label="Menu">
+                    <IconButton color="inherit" aria-label="Menu" onClick={this.toggleSidebar}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="title" color="inherit">
@@ -52,8 +60,18 @@ class Header extends Component {
                         anchorEl={anchorEl}
                         open={open}
                         onClose={this.handleClose}>
-                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                        <MenuItem onClick={this.signOut}>Sign out</MenuItem>
+                        <ListItem button component={Link} to="/profile">
+                            <ListItemIcon>
+                                <AccountCircle />
+                            </ListItemIcon>
+                            <ListItemText inset primary="My account" />
+                        </ListItem>
+                        <ListItem button onClick={this.signOut}>
+                            <ListItemIcon>
+                                <ExitToApp />
+                            </ListItemIcon>
+                            <ListItemText inset primary="Sign out" />
+                        </ListItem>
                     </Menu>
                 </Toolbar>
             </AppBar>

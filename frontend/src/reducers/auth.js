@@ -38,8 +38,8 @@ export default (state = initialState, action) => {
             }
         case auth.SIGN_OUT:
             return {
-                access: undefined,
-                refresh: undefined,
+                access: action.payload.token,
+                refresh: action.payload.token,
                 errors: {},
             }
         default:

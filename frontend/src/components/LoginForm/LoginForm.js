@@ -32,7 +32,7 @@ export default class LoginForm extends Component {
                 <form onSubmit={this.onSubmit}>
                     <Typography variant="title" align="center" gutterBottom>Login</Typography>
                     <Typography variant="subheading" align="center" gutterBottom color="textSecondary">
-                        Please enter your username and password to login.
+                        Please enter your username and password to login
                     </Typography>
                     {
                         errors.non_field_errors ?
@@ -40,11 +40,11 @@ export default class LoginForm extends Component {
                                 {errors.non_field_errors}
                             </Typography> : ""
                     }
-                    <TextField autoFocus fullWidth name="username" label="Username" id="id-username-input"
+                    <TextField autoFocus fullWidth name="username" label="Username" id="id-username-input" margin="normal"
                         error={errors.username ? true : false} type="text" helperText={errors.username} placeholder="Enter your username"
                         onChange={this.handleInputChange}/>
 
-                    <TextField fullWidth name="password" label="Password" id="id-password-input"
+                    <TextField fullWidth name="password" label="Password" id="id-password-input" margin="normal"
                         error={errors.password ? true : false} type="password" helperText={errors.password} placeholder="Enter your password"
                         onChange={this.handleInputChange}/>
                     

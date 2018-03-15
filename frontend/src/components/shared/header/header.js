@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+
+import { isSidebarOpen } from '../../../reducers';
+import { signOut } from "../../../actions/auth";
+import { toggleSidebar } from "../../../actions/layout";
 
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -28,7 +34,6 @@ class Header extends Component {
 
     signOut = () => {
         this.props.signOut();
-        this.setState({ anchorEl: null });
     }
 
     toggleSidebar = () => {
@@ -60,7 +65,7 @@ class Header extends Component {
                         anchorEl={anchorEl}
                         open={open}
                         onClose={this.handleClose}>
-                        <ListItem button component={Link} to="/profile">
+                        <ListItem button component={Link} to="/profile" onClick={this.handleClose}>
                             <ListItemIcon>
                                 <AccountCircle />
                             </ListItemIcon>
@@ -78,4 +83,11 @@ class Header extends Component {
         )
     }
 }
-export default Header;
+const mapStateToProps = (state) => ({
+    isSidebarOpen: isSidebarOpen(state)
+})
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators({ signOut: signOut, toggleSidebar: toggleSidebar }, dispatch)
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

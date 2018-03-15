@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import classNames from 'classnames';
+
+import { isSidebarOpen } from '../../../reducers';
 
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
@@ -55,4 +58,9 @@ class Sidebar extends Component{
         )
     }
 }
-export default withStyles(styles)(Sidebar);
+const mapStateToProps = (state) => ({
+    isSidebarOpen: isSidebarOpen(state)
+})
+
+const sidebarComponent = withStyles(styles)(Sidebar)
+export default connect(mapStateToProps)(sidebarComponent);

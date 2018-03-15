@@ -6,12 +6,12 @@ import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router'
 import registerServiceWorker from './registerServiceWorker';
 
-import './index.css';
 import CssBaseline from 'material-ui/CssBaseline';
 import configureStore from './stores/store.js';
 import App from './containers/App';
 import Login from './containers/Login';
 import PrivateRoute from './containers/PrivateRoute';
+import './index.css';
 
 
 const history = createHistory()
@@ -23,7 +23,7 @@ ReactDOM.render((
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Switch>
-                    <Route exact path="/login/" component={Login} />
+                    <Route exact path="/login" component={Login} />
                     <PrivateRoute path="/" component={App} />
                 </Switch>
             </ConnectedRouter>

@@ -10,4 +10,6 @@
 .app-content{
     flex-grow: 1;
     min-width: 0;
+    height: calc( 100vh - 64px );
+    overflow: auto;
 }

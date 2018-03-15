@@ -14,7 +14,7 @@ const Login = (props) => {
     }
     return (
         <div className = "login-page" >
-            <Grid container>
+            <Grid container spacing={0}>
                 <Grid item sm={3} md={4}></Grid>
                 <Grid item xs={12} sm={6} md={4} >
                     <LoginForm {...props} />

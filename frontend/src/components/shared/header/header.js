@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
-
-import { isSidebarOpen } from '../../../reducers';
-import { signOut } from "../../../actions/auth";
-import { toggleSidebar } from "../../../actions/layout";
 
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -83,11 +77,5 @@ class Header extends Component {
         )
     }
 }
-const mapStateToProps = (state) => ({
-    isSidebarOpen: isSidebarOpen(state)
-})
-const mapDispatchToProps = (dispatch) => (
-    bindActionCreators({ signOut: signOut, toggleSidebar: toggleSidebar }, dispatch)
-)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

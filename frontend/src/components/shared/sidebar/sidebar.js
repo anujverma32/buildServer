@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
 import classNames from 'classnames';
-
-import { isSidebarOpen } from '../../../reducers';
 
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
@@ -47,20 +44,16 @@ class Sidebar extends Component{
                         </ListItemIcon>
                         <ListItemText primary="Dashboard" />
                     </ListItem>
-                    <ListItem button component={Link} to="/settings">
+                    <ListItem button component={Link} to="/servers">
                         <ListItemIcon>
                             <Settings />
                         </ListItemIcon>
-                        <ListItemText primary="Settings" />
+                        <ListItemText primary="Connected Servers" />
                     </ListItem>
                 </List>
             </Drawer>
         )
     }
 }
-const mapStateToProps = (state) => ({
-    isSidebarOpen: isSidebarOpen(state)
-})
 
-const sidebarComponent = withStyles(styles)(Sidebar)
-export default connect(mapStateToProps)(sidebarComponent);
+export default withStyles(styles)(Sidebar);

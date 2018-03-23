@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 
-class ServersList extends Component {
+class ServerList extends Component {
+    componentDidMount() {
+        this.props.getServerList();
+    }
     render() {
         return(
             <div>This is listing</div>
         )
     }
 }
-export default ServersList;
+export default ServerList;

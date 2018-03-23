@@ -6,6 +6,7 @@ import echo, * as fromEcho from './echo'
 import test, * as fromTest from './test'
 import profile, * as fromProfile from './user'
 import layout, * as fromLayout from './layout'
+import server, * as fromServer from "./server";
 
 export default combineReducers({
     auth: auth,
@@ -13,6 +14,7 @@ export default combineReducers({
     test: test,
     profile: profile,
     layout: layout,
+    server: server,
     router: routerReducer
 })
 
@@ -38,6 +40,8 @@ export const profileData =
     state => fromProfile.profileData(state.profile)
 export const isSidebarOpen =
     state => fromLayout.isSidebarOpen(state.layout)
+export const serverList =
+    state => fromServer.serverList(state.server)
 
 export function withAuth(headers = {}) {
     return (state) => ({

@@ -10,7 +10,7 @@ class ServerList extends Component {
         return (
             <div className="settings-container" >
                 <ServerListComponent {...this.props} />
-            </div >
+            </div>
         )
     }
 }

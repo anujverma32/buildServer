@@ -7,6 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case server.SERVER_LIST_SUCCESS:
+            console.log(action.payload)
             return {
                 serverList: action.payload
             }

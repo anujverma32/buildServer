@@ -16,7 +16,7 @@ class ServerList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    serverList: serverList
+    serverList: serverList(state)
 })
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({ getServerList: getServerList }, dispatch)

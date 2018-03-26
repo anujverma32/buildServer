@@ -18,6 +18,12 @@ class ServerList extends Component {
     componentDidMount() {
         this.props.getServerList();
     }
+    editServer() {
+        console.log("edit");
+    }
+    deleteServer() {
+        console.log("delete");
+    }
     render() {
         const { classes } = this.props;
         return(
@@ -31,19 +37,14 @@ class ServerList extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {typeof (this.props.serverList.length) == "object" ? this.props.serverList.map(
+                        {this.props.serverList.map(
                             server => {
                                 <TableRow key={server.id}>
                                     <TableCell>{server.server_name}</TableCell>
-                                    <TableCell>{this.editServer(server.id)}</TableCell>
-                                    <TableCell>{this.deleteServer(server.id)}</TableCell>
+                                    <TableCell><button onClick={this.editServer}>Edit</button></TableCell>
+                                    <TableCell><button onClick={this.deleteServer}>Delete</button></TableCell>
                                 </TableRow>
-                            }) :
-                            <TableRow key={0}>
-                                <TableCell>{"anuj"}</TableCell>
-                                <TableCell>{"anuj2"}</TableCell>
-                                <TableCell>{"anuj3"}</TableCell>
-                            </TableRow>
+                            })
                         }
                     </TableBody>
                 </Table>

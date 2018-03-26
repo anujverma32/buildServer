@@ -1,14 +1,15 @@
 import * as server from '../actions/server'
 const initialState = {
-    serverList: undefined,
-    server: undefined,
+    serverList: [],
+    server: {},
     error: {}
 }
 export default (state = initialState, action) => {
     switch (action.type) {
         case server.SERVER_LIST_SUCCESS:
-            console.log(action.payload)
+            console.log("reducer", action.payload)
             return {
+                ...state,
                 serverList: action.payload
             }
         default:

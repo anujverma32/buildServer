@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import ServerFormComponent from '../../components/ServerForm/ServerForm';
 
+import { getServer, createServer, updateServer } from "../../actions/server";
+import { serverSettings } from "../../reducers";
+
 class ServerForm extends Component {
 
     render = () => {
@@ -15,9 +18,10 @@ class ServerForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    serverSettings: serverSettings(state)
 })
 const mapDispatchToProps = (dispatch) => (
-    bindActionCreators({}, dispatch)
+    bindActionCreators({ getServer: getServer, createServer: createServer, updateServer: updateServer }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServerForm);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import ServerListComponent from "../../components/ServerList/ServerList";
 import { serverList } from "../../reducers/index";
-import { getServerList } from "../../actions/server";
+import { getServerList, deleteServer } from "../../actions/server";
 
 class ServerList extends Component {
     render = () => {
@@ -16,7 +16,7 @@ class ServerList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    serverList: serverList(state)
+    currServerList: serverList(state)
 })
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({ getServerList: getServerList }, dispatch)

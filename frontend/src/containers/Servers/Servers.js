@@ -8,8 +8,10 @@ const Servers = (props) => {
         <div className="settings-container" >
             <Switch>
                 <Route exact path="/servers" component={ServersList} />
-                <Route exact path="/servers/new" component={ServerForm} />
-                <Route exact path="/servers/:id" component={ServerForm} />
+                <Route exact path="/servers/new" render={(props) => (
+                    <ServerForm {...props} data={{new : true}} />
+                )} />
+                <Route path="/servers/:id" component={ServerForm} />
             </Switch>
         </div >
     )

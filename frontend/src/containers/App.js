@@ -25,7 +25,7 @@ class App extends Component{
           <div className="app-content">
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/servers" component={Servers} />
+              <Route path="/servers" component={Servers} />
               <Route exact path="/profile" component={Profile} />
               <Redirect exact from='/' to='/dashboard' />
             </Switch>

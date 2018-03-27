@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { withStyles } from 'material-ui/styles';
+import { Link } from 'react-router-dom';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
     root: {
@@ -12,14 +15,16 @@ const styles = theme => ({
     table: {
         minWidth: 700,
     },
+    topBar: {
+        display: 'flex',
+        padding: '0 15px',
+        margin: '10px 0'
+    }
 });
 
 class ServerList extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.getServerList();
-    }
-    editServer() {
-        console.log("edit");
     }
     deleteServer() {
         console.log("delete");
@@ -28,6 +33,10 @@ class ServerList extends Component {
         const { classes } = this.props;
         return(
             <Paper className={classes.root}>
+                <div className={classes.topBar}>
+                    <div className="filler"></div>
+                    <Button variant="raised" color="primary" component={Link} to="/servers/new">Add New</Button>
+                </div>
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
@@ -37,14 +46,14 @@ class ServerList extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.serverList.map(
-                            server => {
+                        {this.props.currServerList.map(
+                            (server) => 
                                 <TableRow key={server.id}>
-                                    <TableCell>{server.server_name}</TableCell>
-                                    <TableCell><button onClick={this.editServer}>Edit</button></TableCell>
-                                    <TableCell><button onClick={this.deleteServer}>Delete</button></TableCell>
+                                    <TableCell><Typography variant="subheading">{server.server_name}</Typography></TableCell>
+                                    <TableCell><Button component={Link} to={"/servers/"+server.id} color="primary">Edit</Button></TableCell>
+                                    <TableCell><Button onClick={() => this.deleteServer(server.id)} color="secondary">Delete</Button></TableCell>
                                 </TableRow>
-                            })
+                            )
                         }
                     </TableBody>
                 </Table>

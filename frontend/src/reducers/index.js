@@ -42,6 +42,8 @@ export const isSidebarOpen =
     state => fromLayout.isSidebarOpen(state.layout)
 export const serverList =
     state => fromServer.serverList(state.server)
+export const serverSettings =
+    state => fromServer.serverSettings(state.server)
 
 export function withAuth(headers = {}) {
     return (state) => ({

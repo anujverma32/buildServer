@@ -34,20 +34,20 @@ export default class ServerForm extends Component {
     }
 
     handleInputChange = (event) => {
-        console.log("yo");
         const target = event.target,
             value = target.type ===
                 'checkbox' ? target.checked : target.value,
-            name = target.name
-        let settings = JSON.parse(JSON.stringify(this.state.serverSettings));
-        settings[name] = value;
+            name = target.name;
         this.setState({
-            "serverSettings": settings
+            serverSettings : {
+                ...this.state.serverSettings,
+                [name]: value
+            }
         });
     }
     onSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit(this.state);
+        console.log(this.state.serverSettings);
     }
     render() {
         const errors = this.props.errors || {};
@@ -65,38 +65,38 @@ export default class ServerForm extends Component {
                                     </Typography> : ""
                             }
                             <div className="form-group">
-                                <TextField fullWidth required name="serverName" label="Server Name" id="id-serverName-input" margin="normal"
-                                    error={errors.serverName ? true : false} type="text" helperText={errors.serverName ? errors.serverName : "This should be unique. It will serve as a unique name for your app"} placeholder="Enter your Server Name"
+                                <TextField fullWidth required name="server_name" label="Server Name" id="id-server_name-input" margin="normal"
+                                    error={errors.server_name ? true : false} type="text" helperText={errors.server_name ? errors.server_name : "This should be unique. It will serve as a unique name for your app"} placeholder="Enter your Server Name"
                                     onChange={this.handleInputChange} value={this.state.serverSettings.server_name} />        
                             </div>
 
                             <div className="form-group">
-                                <TextField fullWidth required name="sshUsername" label="SSH Username" id="id-sshUsername-input" margin="normal"
-                                    error={errors.sshUsername ? true : false} type="text" helperText={errors.sshUsername} placeholder="Enter your SSH Username"
+                                <TextField fullWidth required name="ssh_username" label="SSH Username" id="id-ssh_username-input" margin="normal"
+                                    error={errors.ssh_username ? true : false} type="text" helperText={errors.ssh_username} placeholder="Enter your SSH Username"
                                     onChange={this.handleInputChange} value={this.state.serverSettings.ssh_username} />
                             </div>
                                 
                             <div className="form-group">
-                                <TextField fullWidth required name="sshIP" label="SSH IP" id="id-sshIP-input" margin="normal"
-                                    error={errors.sshIP ? true : false} type="text" helperText={errors.sshIP} placeholder="Enter your SSH IP"
+                                <TextField fullWidth required name="ssh_ip" label="SSH IP" id="id-ssh_ip-input" margin="normal"
+                                    error={errors.ssh_ip ? true : false} type="text" helperText={errors.ssh_ip} placeholder="Enter your SSH IP"
                                     onChange={this.handleInputChange} value={this.state.serverSettings.ssh_ip} />
                             </div>
 
                             <div className="form-group">
-                                <TextField fullWidth required name="sshPort" label="SSH Port" id="id-sshPort-input" margin="normal" value="22"
-                                    error={errors.sshPort ? true : false} type="number" helperText={errors.sshPort} placeholder="Enter your SSH Port"
+                                <TextField fullWidth required name="ssh_port" label="SSH Port" id="id-ssh_port-input" margin="normal" value="22"
+                                    error={errors.ssh_port ? true : false} type="number" helperText={errors.ssh_port} placeholder="Enter your SSH Port"
                                     onChange={this.handleInputChange} value={this.state.serverSettings.ssh_port} />
                             </div>
 
                             <div className="form-group">
-                                <TextField fullWidth required name="sshPassword" label="SSH Password" id="id-sshPassword-input" margin="normal"
-                                    error={errors.sshPassword ? true : false} type="text" helperText={errors.sshPassword} placeholder="Enter your SSH Password"
+                                <TextField fullWidth required name="ssh_password" label="SSH Password" id="id-ssh_password-input" margin="normal"
+                                    error={errors.ssh_password ? true : false} type="text" helperText={errors.ssh_password} placeholder="Enter your SSH Password"
                                     onChange={this.handleInputChange} value={this.state.serverSettings.ssh_password} />
                             </div>
 
                             <div className="form-group">
-                                <TextField fullWidth required name="sbtAppDir" label="SBT App Directory" id="id-sbtAppDir-input" margin="normal"
-                                    error={errors.sbtAppDir ? true : false} type="text" helperText={errors.sbtAppDir ? errors.sbtAppDir : "Absolute path of you app directory"} placeholder="Enter your SBT App Directory"
+                                <TextField fullWidth required name="sbt_app_dir" label="SBT App Directory" id="id-sbt_app_dir-input" margin="normal"
+                                    error={errors.sbt_app_dir ? true : false} type="text" helperText={errors.sbt_app_dir ? errors.sbt_app_dir : "Absolute path of you app directory"} placeholder="Enter your SBT App Directory"
                                     onChange={this.handleInputChange} value={this.state.serverSettings.sbt_app_dir} />
                             </div>
 

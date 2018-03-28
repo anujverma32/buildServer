@@ -17,6 +17,10 @@ export default (state = initialState, action) => {
                 ...state,
                 server: action.payload
             }
+        case server.DELETE_SERVER_SUCCESS:
+            return {
+                ...state
+            }
         default:
             return state
     }

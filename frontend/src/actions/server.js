@@ -52,10 +52,10 @@ export const getServer = (id) => {
         }
     }
 }
-export const updateServer = (id, settings) => {
+export const updateServer = (settings) => {
     return {
         [RSAA]: {
-            endpoint: '/servers/' + id,
+            endpoint: '/servers/' + settings.id,
             method: 'PUT',
             body: JSON.stringify(settings),
             headers: withAuth({ 'Content-Type': 'application/json' }),

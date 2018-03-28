@@ -26,8 +26,8 @@ class ServerList extends Component {
     componentWillMount() {
         this.props.getServerList();
     }
-    deleteServer() {
-        console.log("delete");
+    deleteServer(id) {
+        this.props.deleteServer(id);
     }
     render() {
         const { classes } = this.props;

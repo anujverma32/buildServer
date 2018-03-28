@@ -47,7 +47,11 @@ export default class ServerForm extends Component {
     }
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.serverSettings);
+        if (this.state.new) {
+            this.props.createServer(this.state.serverSettings);
+        } else {
+            this.props.updateServer(this.state.serverSettings);
+        }
     }
     render() {
         const errors = this.props.errors || {};

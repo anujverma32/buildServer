@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
     currServerList: serverList(state)
 })
 const mapDispatchToProps = (dispatch) => (
-    bindActionCreators({ getServerList: getServerList }, dispatch)
+    bindActionCreators({ getServerList: getServerList, deleteServer: deleteServer }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServerList);

@@ -12,18 +12,17 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('url', 'name')
 
-class MessageSerializer(serializers.Serializer):
-    message = serializers.CharField()
-
-class TestSerializer(serializers.Serializer):
-    data = serializers.CharField()
-
 class UserMetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserMeta
         fields = ('user_id', 'meta_key', 'meta_value')
 
+class TestSerializer(serializers.Serializer):
+    data = serializers.CharField()
+
 class ServersSerializer(serializers.ModelSerializer):
+    user_id = serializers.ReadOnlyField(source='user_id.id')
+
     class Meta:
         model = Servers
-        fields = ('id', 'user_id', 'created' ,'server_name', 'ssh_username', 'ssh_ip', 'ssh_port', 'ssh_password', 'sbt_app_dir')
+        fields = ('id', 'user_id' ,'server_name', 'ssh_username', 'ssh_ip', 'ssh_port', 'ssh_password', 'sbt_app_dir')

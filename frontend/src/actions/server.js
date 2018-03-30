@@ -28,6 +28,7 @@ export const getServerList = () => {
     }
 }
 export const createServer = (settings) => {
+    console.log(settings);
     return {
         [RSAA]: {
             endpoint: '/servers/',

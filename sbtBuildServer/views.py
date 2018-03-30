@@ -20,12 +20,6 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-class EchoView(views.APIView):
-    def post(self, request, *args, **kwargs):
-        serializer = MessageSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        return Response(serializer.data)
-
 class TestView(views.APIView):
     def post(self, request, *args, **kwargs):
         file_path = Path('~/.ssh/id_rsa.pub')
@@ -44,6 +38,9 @@ class ServerList(generics.ListCreateAPIView):
 
     def get_queryset(self, *args, **kwargs):
         return Servers.objects.all().filter(user_id=self.request.user.id)
+
+    def perform_create(self, serializer):
+        serializer.save(user_id=self.request.user.id)
 
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Servers.objects.all()

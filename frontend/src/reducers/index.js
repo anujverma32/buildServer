@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
 import auth, * as fromAuth from './auth'
-import echo, * as fromEcho from './echo'
 import test, * as fromTest from './test'
 import profile, * as fromProfile from './user'
 import layout, * as fromLayout from './layout'
@@ -10,7 +9,6 @@ import server, * as fromServer from "./server";
 
 export default combineReducers({
     auth: auth,
-    echo: echo,
     test: test,
     profile: profile,
     layout: layout,
@@ -32,8 +30,6 @@ export const isRefreshTokenExpired =
     state => fromAuth.isRefreshTokenExpired(state.auth)
 export const authErrors =
     state => fromAuth.errors(state.auth)
-export const serverMessage =
-    state => fromEcho.serverMessage(state.echo)
 export const testResponse =
     state => fromTest.testResponse(state.test)
 export const profileData = 
